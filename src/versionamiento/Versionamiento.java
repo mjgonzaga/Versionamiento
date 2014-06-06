@@ -6,8 +6,10 @@
 
 package versionamiento;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -54,7 +56,7 @@ public class Versionamiento {
                     writer.newLine(); 
                     writer.write("NOMBRE: "+persona1.getNombre());
                     writer.newLine(); 
-                    writer.write("APELLIDO: "+persona1.getNombre());
+                    writer.write("APELLIDO: "+persona1.getApellido());
                     writer.newLine(); 
                     writer.write("CEDULA: "+persona1.getCedula());
                     writer.newLine(); 
@@ -71,10 +73,21 @@ public class Versionamiento {
                     writer.close();
                 } catch (IOException e) {
                 System.err.println(e);
-                System.exit(1);
+                
                 }
-                
-                
+                //LECTURA DE DATOS DE ARCHIVO
+                try {
+                  File inFile = new File("C:\\Users\\nelita\\Desktop\\archivo.txt");
+                  BufferedReader Reader = new BufferedReader(new FileReader(inFile));
+                  String line;
+                  while((line = Reader.readLine()) != null)
+                    System.out.println(line);
+                  Reader .close();
+                }
+                catch(Exception e) {
+                  System.out.println(e);
+                }
+
     }
     
 }
